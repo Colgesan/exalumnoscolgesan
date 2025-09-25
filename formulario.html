@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encuesta - Exalumnos Colgesan</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<style>
+    @import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    html {
+        font-size: 10px;
+        font-family: 'Montserrat', sans-serif;
+        scroll-behavior: smooth;
+        background-color: rgb(255, 255, 255);
+    }
+    #encuesta {
+        background-color: #ffffff;
+    }
+    
+    .encuesta-benefits {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+    
+    .benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: #f8f9fa;
+      padding: 20px 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      max-width: 300px;
+    }
+    
+    .benefit-item:hover {
+      background: #e9ecef;
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+    
+    .benefit-icon {
+      font-size: 2.5rem;
+      min-width: 40px;
+    }
+    
+    .benefit-item p {
+      font-size: 1.6rem;
+      margin: 0;
+      color: #333;
+      font-weight: 500;
+    }
+    
+    .encuesta-button {
+      display: inline-block;
+      background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+      color: white;
+      padding: 20px 40px;
+      border-radius: 50px;
+      font-size: 2rem;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+      transition: all 0.3s ease;
+    }
+    
+    .encuesta-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6);
+    }
+    
+    @media (max-width: 768px) {
+      .encuesta-benefits {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .benefit-item {
+        max-width: 100%;
+      }
+      
+      .encuesta-button {
+        padding: 15px 30px;
+        font-size: 1.6rem;
+      }
+    }
+    #projects {
+        background-color: #ffffff;
+        background-size: cover;
+        background-position: center;
+    }
+    #header {
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: auto;
+    }
+    #header .header {
+        min-height: 8vh;
+        background-color: rgba(39, 39, 39, 0.722);
+        transition: 0.3s ease background-color;
+    }
+    #header .nav-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        max-width: 1300px;
+        padding: 0 10px;
+    }
+    .side-menu {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      right: 0;
+      background-color: hsl(0, 100%, 66%);
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+      z-index: 1000;
+    }
+    
+    .side-menu a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+    
+    .side-menu a:hover {
+      background-color: #575757;
+    }
+    
+    .side-menu .close-btn {
+      position: absolute;
+      top: 0;
+      right: 15px;
+      font-size: 36px;
+    }
+    
+    .side-menu.open {
+      width: 250px;
+    }
+    
+    .menu-icon {
+      font-size: 40px;     
+      color: white;        
+      cursor: pointer;     
+      padding: 10px;       
+    }
+    
+    .menu-icon:hover {
+      color: hsl(0, 100%, 66%)       
+    }
+    a {
+        text-decoration: none;
+    }
+    .container {
+        min-height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+    p {
+        color: black;
+        font-size: 2rem;
+        margin-top: 5px;
+        line-height: 2.5rem;
+        font-weight: 300;
+        letter-spacing: 0.05rem;
+    }
+    .section-title {
+        font-size: 4rem;
+        font-weight: 300;
+        color: rgb(0, 0, 0);
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        text-align: center;
+    }
+    .section-title span {
+        color:hsl(0, 100%, 66%);;
+    }
+    
+    .cta {
+        display: inline-block;
+        padding: 10px 30px;
+        color: rgb(0, 0, 0);
+        background-color: transparent;
+        border: 2px solid hsl(0, 100%, 66%);;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1rem;
+        margin-top: 30px;
+        transition: 0.3s ease;
+        transition-property: background-color, color;
+    }
+    .cta:hover {
+        color: rgb(0, 0, 0);
+        background-color: crimson;
+    }
+    .brand h1 {
+        font-size: 3rem;
+        text-transform: uppercase;
+        color: rgb(255, 255, 255);
+    }
+    .brand h1 span {
+        color: hsl(0, 100%, 66%);;
+    }
+    
+    
+    /* Footer */
+    #footer {
+        background-image: linear-gradient(60deg, #111111 0%, #000000 100%);
+    }
+    #footer .footer {
+        min-height: 200px;
+        flex-direction: column;
+        padding-top: 50px;
+        padding-bottom: 10px;
+    }
+    #footer h2 {
+        color: rgb(0, 0, 0);
+        font-weight: 500;
+        font-size: 1.8rem;
+        letter-spacing: 0.1rem;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    #footer .social-icon {
+        display: flex;
+        margin-bottom: 30px;
+    }
+    #footer .social-item {
+        height: 50px;
+        width: 50px;
+        margin: 0 5px;
+    }
+    #footer .social-item img {
+        filter: grayscale(1);
+        transition: 0.3s ease filter;
+    }
+    #footer .social-item:hover img {
+        filter: grayscale(0);
+    }
+    #footer p {
+        color: white;
+        font-size: 1.3rem;
+    }
+    /* End Footer */
+    
+    /* Media Query For Tablet */
+    @media only screen and (min-width: 768px) {
+        .cta {
+            font-size: 2.5rem;
+            padding: 20px 60px;
+        }
+        h1.section-title {
+            font-size: 6rem;
+        }
+    
+    }
+    
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .logo-escudo {
+      height: 50px;
+      width: auto;
+    }
+    
+    </style>
+  
+<body>
+  <!-- Encabezado -->
+  <section id="header">
+    <div class="header container">
+      <div class="nav-bar">
+       <div class="brand">
+  <a href="index.html" class="logo-link">
+    <img src="img/ESCUDOCOLG.png" alt="Escudo del Colegio" class="logo-escudo">
+    <h1><span>E</span>XALUMNOS <span>C</span>OLGESAN</h1>
+  </a>
+</div>
+        <!-- Ícono de menú -->
+<div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+
+<!-- Menú lateral -->
+<div id="sideMenu" class="side-menu">
+  <a href="javascript:void(0)" class="close-btn" onclick="toggleMenu()">&times;</a>
+  <a href="index.html">Inicio</a>
+  <a href="formulario.html">Formulario</a>
+  <a href="administracion.html">Administración</a>
+</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de encuesta -->
+  <section id="encuesta" style="text-align: center; padding: 120px 20px 80px; background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%); min-height: 100vh; display: flex; align-items: center;">
+    <div class="services container" style="max-width: 1000px; margin: 0 auto;">
+      <div class="service-top" style="margin-bottom: 60px;">
+        <h1 class="section-title" style="font-size: 5rem; margin-bottom: 20px; background: linear-gradient(45deg, #ff6b6b, #ee5a24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">FOR<span style="color: #333;">MULA</span>RIO</h1>
+        <div style="background: linear-gradient(45deg, #ff6b6b, #ee5a24); height: 4px; width: 100px; margin: 20px auto; border-radius: 2px;"></div>
+        <p style="font-size: 2.2rem; font-weight: 600; color: #333; margin: 20px 0;">DIOS, VIRTUD Y CIENCIA</p>
+        <div style="background: #f1f3f4; padding: 30px; border-radius: 15px; margin: 30px 0; box-shadow: 0 8px 25px rgba(0,0,0,0.12);">
+          <p style="font-size: 1.8rem; color: #555; margin: 10px 0;">Responde el siguiente formulario,</p> 
+          <p style="font-size: 1.8rem; color: #555; margin: 10px 0; font-weight: 600;">¡nos servirá mucho!</p>
+          <p style="font-size: 1.6rem; color: #777; margin: 10px 0;">🔒 Tus datos están protegidos.</p>
+        </div>
+      </div>
+      
+      <div class="encuesta-benefits" style="margin: 50px 0;">
+        <div class="benefit-item" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none;">
+          <span class="benefit-icon" style="color: #fff;">🤝</span>
+          <p style="color: white; font-weight: 600;">Mantente conectado con la institución</p>
+        </div>
+        <div class="benefit-item" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border: none;">
+          <span class="benefit-icon" style="color: #fff;">📢</span>
+          <p style="color: white; font-weight: 600;">Recibe noticias y eventos especiales</p>
+        </div>
+      </div>
+      
+      <div style="margin-top: 50px;">
+        <a href="https://forms.gle/H7vqYe5GcyA6jxiMA" target="_blank" class="encuesta-button" style="position: relative; overflow: hidden; font-size: 2.2rem; padding: 25px 50px;">
+          <span class="button-text">✨ RESPONDER FORMULARIO ✨</span>
+        </a>
+        <p style="font-size: 1.4rem; color: #666; margin-top: 20px;">Solo toma 3 minutos completarlO</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Pie de página -->
+  <section id="footer">
+    <div class="footer container">
+      <div class="brand">
+        <h1><span>E</span>XALUMNOS <span>C</span>OLGESAN</h1>
+      </div>
+      <div class="social-icon">
+        <div class="social-item">
+          <a href="https://www.facebook.com/share/18bntbgoQ6/?mibextid=wwXIfr"><img src="img/faceee.png" /></a>
+        </div>
+        <div class="social-item">
+          <a href="https://www.facebook.com/share/15jgtyJeZv/?mibextid=wwXIfr"><img src="img/faceee.png" /></a>
+        </div>
+        <div class="social-item">
+          <a href="https://www.facebook.com/share/1ACRvquzre/?mibextid=wwXIfr"><img src="img/faceee.png" /></a>
+        </div>
+      </div>
+      <p>Copyright ©️ 2025</p>
+    </div>
+  </section>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  
+
+<script>
+function toggleMenu() {
+  const sideMenu = document.getElementById("sideMenu");
+  sideMenu.classList.toggle("open");
+}
+  </script>
+
+  <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/689ba268e0fd9f192a113214/1j2fv4q9n';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+<script> const heroSwiper = new Swiper('.heroSwiper', {
+  loop: true,
+  autoplay: {
+    delay: 3000, // cada 3 segundos cambia el slide
+    disableOnInteraction: false, // para que no se detenga si el usuario usa las flechas
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+});
+</script>
+
+</body>
+</html>

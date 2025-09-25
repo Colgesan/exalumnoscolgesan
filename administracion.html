@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administración - Exalumnos Colgesan</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<style>
+    @import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    html {
+        font-size: 10px;
+        font-family: 'Montserrat', sans-serif;
+        scroll-behavior: smooth;
+        background-color: rgb(255, 255, 255);
+    }
+    #encuesta {
+        background-color: #ffffff92;
+    }
+    #projects {
+        background-color: #ffffff;
+        background-size: cover;
+        background-position: center;
+        opacity: 30 ;
+        z-index: -1;
+    }
+    
+    #quienes {
+        background-color: #ffffff;
+        background-size: cover;
+        background-position: center;
+        opacity: 30 ;
+        z-index: -1;
+        
+    
+    }
+    #consejo {
+        background-color: #ffffff;
+    }
+    a {
+        text-decoration: none;
+    }
+    #contact{
+        background-color: #ffffff;
+        background-size: cover;
+        background-position: center;
+        opacity: 30 ;
+        z-index: -1;
+    
+    
+    }
+    .container {
+        min-height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+    p {
+        color: black;
+        font-size: 2rem;
+        margin-top: 5px;
+        line-height: 2.5rem;
+        font-weight: 300;
+        letter-spacing: 0.05rem;
+    }
+    .section-title {
+        font-size: 4rem;
+        font-weight: 300;
+        color: rgb(0, 0, 0);
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        text-align: center;
+    }
+    .section-title span {
+        color:hsl(0, 100%, 66%);;
+    }
+    
+    .cta {
+        display: inline-block;
+        padding: 10px 30px;
+        color: rgb(0, 0, 0);
+        background-color: transparent;
+        border: 2px solid hsl(0, 100%, 66%);;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1rem;
+        margin-top: 30px;
+        transition: 0.3s ease;
+        transition-property: background-color, color;
+    }
+    .cta:hover {
+        color: rgb(0, 0, 0);
+        background-color: crimson;
+    }
+    .brand h1 {
+        font-size: 3rem;
+        text-transform: uppercase;
+        color: rgb(255, 255, 255);
+    }
+    .brand h1 span {
+        color: hsl(0, 100%, 66%);;
+    }
+    
+    /* Header section */
+    #header {
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: auto;
+    }
+    #header .header {
+        min-height: 8vh;
+        background-color: rgba(31, 30, 30, 0.24);
+        transition: 0.3s ease background-color;
+    }
+    #header .nav-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        max-width: 1300px;
+        padding: 0 10px;
+    }
+    #header .nav-list ul {
+        list-style: none;
+        position: absolute;
+        background-color: rgb(31, 30, 30);
+        width: 100vw;
+        height: 100vh;
+        left: 100%;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+        overflow-x: hidden;
+        transition: 0.5s ease left;
+    }
+    #header .nav-list ul.active {
+        left: 0%;
+    }
+    #header .nav-list ul a {
+        font-size: 2.5rem;
+        font-weight: 500;
+        letter-spacing: 0.2rem;
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+        text-transform: uppercase;
+        padding: 20px;
+        display: block;
+    }
+    #header .nav-list ul a::after {
+        content: attr(data-after);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        color: rgba(255, 255, 255, 0.127);
+        font-size: 13rem;
+        letter-spacing: 50px;
+        z-index: -1;
+        transition: 0.3s ease letter-spacing;
+    }
+    #header .nav-list ul li:hover a::after {
+        transform: translate(-50%, -50%) scale(1);
+        letter-spacing: initial;
+    }
+    #header .nav-list ul li:hover a {
+        color: hsl(0, 100%, 66%);;
+    }
+    #header .hamburger {
+        height: 60px;
+        width: 60px;
+        display: inline-block;
+        border: 3px solid rgb(255, 255, 255);
+        border-radius: 50%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+        cursor: pointer;
+        transform: scale(0.8);
+        margin-right: 20px;
+    }
+    #header .hamburger:after {
+        position: absolute;
+        content: '';
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+        border: 3px solid white;
+        animation: hamburger_puls 1s ease infinite;
+    }
+    #header .hamburger .bar {
+        height: 2px;
+        width: 30px;
+        position: relative;
+        background-color: white;
+        z-index: -1;
+    }
+    #header .hamburger .bar::after,
+    #header .hamburger .bar::before {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        background-color: white;
+        transition: 0.3s ease;
+        transition-property: top, bottom;
+    }
+    #header .hamburger .bar::after {
+        top: 8px;
+    }
+    #header .hamburger .bar::before {
+        bottom: 8px;
+    }
+    #header .hamburger.active .bar::before {
+        bottom: 0;
+    }
+    #header .hamburger.active .bar::after {
+        top: 0;
+    }
+    
+    /* End Header section */
+    
+    /* Hero Section */
+    
+
+    
+    #hero .hero {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 50px;
+        justify-content: flex-start;
+    }
+    #hero h1 {
+        display: block;
+        width: fit-content;
+        font-size: 4rem;
+        position: relative;
+        color: transparent;
+        animation: text_reveal 0.5s ease forwards;
+        animation-delay: 1s;
+    }
+    #hero h1:nth-child(1) {
+        animation-delay: 1s;
+    }
+    #hero h1:nth-child(2) {
+        animation-delay: 2s;
+    }
+    #hero h1:nth-child(3) {
+        animation: text_reveal_name 0.5s ease forwards;
+        animation-delay: 3s;
+    }
+    #hero h1 span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        background-color: hsl(0, 100%, 66%);
+        animation: text_reveal_box 1s ease;
+        animation-delay: 0.5s;
+    }
+    #hero h1:nth-child(1) span {
+        animation-delay: 0.5s;
+    }
+    #hero h1:nth-child(2) span {
+        animation-delay: 1.5s;
+    }
+    #hero h1:nth-child(3) span {
+        animation-delay: 2.5s;
+    }
+    
+    /* End Hero Section */
+    
+    /* Services Section */
+    #services .services {
+        flex-direction: column;
+        text-align: center;
+        max-width: 1500px;
+        margin: 0 auto;
+        padding: 100px 0;
+    }
+    #services .service-top {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    #services .service-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 50px;
+    }
+    #services .service-item {
+        flex-basis: 80%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        padding: 30px;
+        border-radius: 10px;
+        background-image: url(./img/img-1.png);
+        background-size: cover;
+        margin: 10px 5%;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+    }
+    #services .service-item::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        background-image: linear-gradient(60deg, #343434 0%, #979797 100%);
+        opacity: 0.9;
+        z-index: -1;
+    }
+    #services .service-bottom .icon {
+        height: 80px;
+        width: 80px;
+        margin-bottom: 20px;
+    }
+    #services .service-item h2 {
+        font-size: 2rem;
+        color: white;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+    }
+    #services .service-item p {
+        color: white;
+        text-align: left;
+    }
+    /* End Services Section */
+    
+    /* Projects section */
+    #projects .projects {
+        flex-direction: column;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 100px 0;
+    }
+    #projects .projects-header h1 {
+        margin-bottom: 50px;
+    }
+    #projects .all-projects {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    #projects .project-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 80%;
+        margin: 20px auto;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+    #projects .project-info {
+        padding: 30px;
+        flex-basis: 50%;
+        height: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        background-image: linear-gradient(60deg, #6c3636 0%, #485563 100%);
+        color: white;
+    }
+    #projects .project-info h1 {
+        font-size: 4rem;
+        font-weight: 500;
+    }
+    #projects .project-info h2 {
+        font-size: 1.8rem;
+        font-weight: 500;
+        margin-top: 10px;
+    }
+    #projects .project-info p {
+        color: white;
+    }
+    #projects .project-img {
+        flex-basis: 50%;
+        height: 300px;
+        overflow: hidden;
+        position: relative;
+    }
+    #projects .project-img:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+        opacity: 0.7;
+    }
+    #projects .project-img img {
+        transition: 0.3s ease transform;
+    }
+    #projects .project-item:hover .project-img img {
+        transform: scale(1.1);
+    }
+    /* End Projects section */
+    
+    /* About Section */
+    #consejo .about {
+        flex-direction: column-reverse;
+        text-align: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 100px 20px;
+    }
+    #consejo .col-left {
+        width: 250px;
+        height: 360px;
+    }
+    #consejo .col-right {
+        width: 100%;
+    }
+    #consejo .col-right h2 {
+        font-size: 1.8rem;
+        font-weight: 500;
+        letter-spacing: 0.2rem;
+        margin-bottom: 10px;
+    }
+    #consejo .col-right p {
+        margin-bottom: 20px;
+    }
+    #consejo .col-right .cta {
+        color: black;
+        margin-bottom: 50px;
+        padding: 10px 20px;
+        font-size: 2rem;
+    }
+    #consejo .col-left .about-img {
+        height: 65%;
+        width: 100%;
+        position: relative;
+        border: 10px solid rgb(0, 0, 0);
+    }
+    /* End About Section */
+    
+    /* contact Section */
+    #contact .contact {
+        flex-direction: column;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 90%;
+    }
+    #contact .contact-items {
+        /* max-width: 400px; */
+        width: 100%;
+    }
+    #contact .contact-item {
+        width: 80%;
+        padding: 20px;
+        text-align: center;
+        border-radius: 10px;
+        padding: 30px;
+        margin: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        box-shadow: 0px 0px 18px 0 #000000c2;
+        transition: 0.3s ease box-shadow;
+    }
+    #contact .contact-item:hover {
+        box-shadow: 0px 0px 5px 0 #000000c9;
+    }
+    #contact .icon {
+        width: 70px;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+    #contact .contact-info h1 {
+        font-size: 2.5rem;
+        font-weight: 500;
+        margin-bottom: 5px;
+        color: rgb(0, 0, 0);
+    }
+    #contact .contact-info h2 {
+        font-size: 1.3rem;
+        line-height: 2rem;
+        font-weight: 500;
+        color: rgb(0, 0, 0);
+    }
+    /*End contact Section */
+    
+    /* Footer */
+    #footer {
+        background-image: linear-gradient(60deg, #111111 0%, #000000 100%);
+    }
+    #footer .footer {
+        min-height: 200px;
+        flex-direction: column;
+        padding-top: 50px;
+        padding-bottom: 10px;
+    }
+    #footer h2 {
+        color: rgb(0, 0, 0);
+        font-weight: 500;
+        font-size: 1.8rem;
+        letter-spacing: 0.1rem;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    #footer .social-icon {
+        display: flex;
+        margin-bottom: 30px;
+    }
+    #footer .social-item {
+        height: 50px;
+        width: 50px;
+        margin: 0 5px;
+    }
+    #footer .social-item img {
+        filter: grayscale(1);
+        transition: 0.3s ease filter;
+    }
+    #footer .social-item:hover img {
+        filter: grayscale(0);
+    }
+    #footer p {
+        color: white;
+        font-size: 1.3rem;
+    }
+    /* End Footer */
+    
+    /* Keyframes */
+    @keyframes hamburger_puls {
+        0% {
+            opacity: 1;
+            transform: scale(1);
+        }
+        100% {
+            opacity: 0;
+            transform: scale(1.4);
+        }
+    }
+    @keyframes text_reveal_box {
+        50% {
+            width: 100%;
+            left: 0;
+        }
+        100% {
+            width: 0;
+            left: 100%;
+        }
+    }
+    @keyframes text_reveal {
+        100% {
+            color: white;
+        }
+    }
+    @keyframes text_reveal_name {
+        100% {
+            color: rgb(214, 228, 136);
+            font-weight: 500;
+        }
+    }
+    /* End Keyframes */
+    
+    /* Media Query For Tablet */
+    @media only screen and (min-width: 768px) {
+        .cta {
+            font-size: 2.5rem;
+            padding: 20px 60px;
+        }
+        h1.section-title {
+            font-size: 6rem;
+        }
+    
+        /* Hero */
+        #hero h1 {
+            font-size: 7rem;
+        }
+        /* End Hero */
+    
+        /* Services Section */
+        #services .service-bottom .service-item {
+            flex-basis: 45%;
+            margin: 2.5%;
+        }
+        /* End Services Section */
+    
+        /* Project */
+        #projects .project-item {
+            flex-direction: row;
+        }
+        #projects .project-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        #projects .project-item {
+            height: 400px;
+            margin: 0;
+            width: 100%;
+            border-radius: 0;
+        }
+        #projects .all-projects .project-info {
+            height: 100%;
+        }
+        #projects .all-projects .project-img {
+            height: 100%;
+        }
+        /* End Project */
+    
+        /* About */
+        #about .about {
+            flex-direction: row;
+        }
+        #about .col-left {
+            width: 600px;
+            height: 400px;
+            padding-left: 60px;
+        }
+        #about .about .col-left .about-img::after {
+            left: -45px;
+            top: 34px;
+            height: 98%;
+            width: 98%;
+            border: 10px solid rgb(190, 147, 156);
+        }
+        #about .col-right {
+            text-align: left;
+            padding: 30px;
+        }
+        #about .col-right h1 {
+            text-align: left;
+        }
+        /* End About */
+    
+        /* contact  */
+        #contact .contact {
+            flex-direction: column;
+            padding: 100px 0;
+            align-items: center;
+            justify-content: center;
+            min-width: 20vh;
+        }
+        #contact .contact-items {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            margin: 0;
+        }
+        #contact .contact-item {
+            width: 30%;
+            margin: 0;
+            flex-direction: row;
+        }
+        #contact .contact-item .icon {
+            height: 100px;
+            width: 100px;
+        }
+        #contact .contact-item .icon img {
+            object-fit: contain;
+        }
+        #contact .contact-item .contact-info {
+            width: 100%;
+            text-align: left;
+            padding-left: 20px;
+        }
+        /* End contact  */
+    }
+    /* End Media Query For Tablet */
+    
+    /* Media Query For Desktop */
+    @media only screen and (min-width: 1200px) {
+        /* header */
+        #header .hamburger {
+            display: none;
+        }
+        #header .nav-list ul {
+            position: initial;
+            display: block;
+            height: auto;
+            width: fit-content;
+            background-color: transparent;
+        }
+        #header .nav-list ul li {
+            display: inline-block;
+        }
+        #header .nav-list ul li a {
+            font-size: 1.8rem;
+        }
+        #header .nav-list ul a:after {
+            display: none;
+        }
+        /* End header */
+    
+        #services .service-bottom .service-item {
+            flex-basis: 22%;
+            margin: 1.5%;
+        }
+    }
+
+    .botones-subpaginas {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+  flex-wrap: wrap;
+  background-color: #111111;
+}
+
+.boton-box {
+  width: 200px;
+  text-align: center;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+
+.boton-box:hover {
+  transform: scale(1.05);
+}
+
+.boton-box img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.boton-box p {
+  margin: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+    /* End  Media Query For Desktop */
+    
+      
+#hero {
+  max-width: 10000px;  
+  margin: auto;
+}
+
+.heroSwiper {
+  height: 500px; 
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#contact.container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-escudo {
+  height: 50px; /* Ajusta el tamaño */
+  width: auto;
+}
+
+.menu-icon {
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+  display: none; /* solo en móviles */
+}
+
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .nav-list ul {
+    display: none;
+    flex-direction: column;
+    background: #333;
+    width: 100%;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    padding: 10px 0;
+  }
+
+  .nav-list ul.show {
+    display: flex;
+  }
+}
+
+/* Estilos para el Directorio del Personal */
+.personal-directory {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 120px 20px 80px 20px;
+  min-height: 100vh;
+}
+
+.directory-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.directory-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.directory-title {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #2d3748;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.directory-title span {
+  color: #800000;
+  background: linear-gradient(45deg, #800000, #dc143c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.directory-subtitle {
+  font-size: 1.8rem;
+  color: #4a5568;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Grid del Personal */
+.staff-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+/* Tarjetas del Personal */
+.staff-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.staff-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #800000, #dc143c, #800000);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.staff-card:hover::before {
+  transform: scaleX(1);
+}
+
+.staff-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+/* Foto del Personal */
+.staff-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  overflow: hidden;
+  border: 4px solid #e2e8f0;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.staff-card:hover .staff-photo {
+  border-color: #800000;
+  transform: scale(1.05);
+}
+
+.staff-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.staff-card:hover .staff-photo img {
+  transform: scale(1.1);
+}
+
+.staff-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #e2e8f0, #cbd5e0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: #718096;
+}
+
+/* Información del Personal */
+.staff-info {
+  text-align: center;
+}
+
+.staff-name {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 8px;
+}
+
+.staff-position {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #800000;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.staff-description {
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: #666;
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Información de Contacto */
+.staff-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 1.3rem;
+  color: #718096;
+}
+
+.contact-icon {
+  width: 16px;
+  height: 16px;
+  color: #800000;
+}
+
+/* Secciones por Departamento */
+.department-section {
+  margin-bottom: 60px;
+}
+
+.department-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #2d3748;
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.department-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #800000, #dc143c);
+  border-radius: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .directory-title {
+    font-size: 3rem;
+  }
+  
+  .directory-subtitle {
+    font-size: 1.6rem;
+  }
+  
+  .staff-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .staff-card {
+    padding: 20px;
+  }
+  
+  .staff-name {
+    font-size: 2rem;
+  }
+  
+  .staff-position {
+    font-size: 1.4rem;
+  }
+  
+  .department-title {
+    font-size: 2.4rem;
+  }
+}
+
+/* Estilos del menú lateral */
+.side-menu {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: hsl(0, 100%, 66%);
+  overflow-x: hidden;
+  transition: 0.3s;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+.side-menu a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.side-menu a:hover {
+  background-color: #575757;
+}
+
+.side-menu .close-btn {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  font-size: 36px;
+}
+
+.side-menu.open {
+  width: 250px;
+}
+
+.menu-icon {
+  font-size: 30px;     
+  color: white;        
+  cursor: pointer;     
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+}
+
+.menu-icon:hover {
+  color: hsl(0, 100%, 66%);       
+}
+
+/* Estilos del logo */
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-escudo {
+  height: 50px;
+  width: auto;
+}
+
+/* Header section */
+#header {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: auto;
+}
+#header .header {
+    min-height: 8vh;
+    background-color: rgba(39, 39, 39, 0.722);
+    transition: 0.3s ease background-color;
+}
+#header .nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    max-width: 1300px;
+    padding: 0 10px;
+}
+    </style>
+  
+<body>
+  <!-- Encabezado -->
+  <section id="header">
+    <div class="header container">
+      <div class="nav-bar">
+        <div class="brand">
+          <a href="index.html" class="logo-link">
+            <img src="img/ESCUDOCOLG.png" alt="Escudo del Colegio" class="logo-escudo">
+            <h1><span>E</span>XALUMNOS <span>C</span>OLGESAN</h1>
+          </a>
+        </div>
+        
+        <!-- Ícono de menú -->
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+
+        <!-- Menú lateral -->
+        <div id="sideMenu" class="side-menu">
+          <a href="javascript:void(0)" class="close-btn" onclick="toggleMenu()">&times;</a>
+          <a href="index.html">Inicio</a>
+          <a href="formulario.html">Formulario</a>
+          <a href="administracion.html">Administración</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de administración -->
+  <!-- Directorio del Personal -->
+  <section class="personal-directory">
+    <div class="directory-container">
+      <div class="directory-header">
+        <h1 class="directory-title">DIRECTORIO DEL <span>PERSONAL</span></h1>
+        <p class="directory-subtitle">Conoce a los líderes, docentes y personal administrativo que conforman la gran familia del Colegio General Santander</p>
+      </div>
+
+      <!-- Administración Principal -->
+      <div class="department-section">
+        <h2 class="department-title">Administración Principal</h2>
+        <div class="staff-grid">
+          <div class="staff-card">
+            <div class="staff-photo">
+              <img src="img/RECTOR.png">
+            </div>
+            <div class="staff-info">
+              <h3 class="staff-name">Pablo Arturo Jaimes
+              <p class="staff-position">Rector</p>
+              <p class="staff-description">Encargado de la gestión administrativa, académica y del bienestar institucional. Representa al colegio ante la comunidad educativa y lidera los procesos de mejoramiento continuo.</p>
+              <div class="staff-contact">
+                <div class="contact-item">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coordinación Académica -->
+      <div class="department-section">
+        <h2 class="department-title">Coordinación Académica sede central</h2>
+        <div class="staff-grid">
+          <div class="staff-card">
+            <div class="staff-photo">
+              <img src="img/coory.jpeg" alt="Coordinadora Académica JM">
+            </div>
+            <div class="staff-info">
+              <h3 class="staff-name">Yasmín Peña Contreras
+              <p class="staff-position">Coordinadora Académica JM</p>
+              <p class="staff-description">Responsable del acompañamiento pedagógico, control académico y apoyo a los docentes y estudiantes en su proceso formativo en la jornada de la mañana.</p>
+              <div class="staff-contact">
+                <div class="contact-item">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="staff-card">
+            <div class="staff-photo">
+              <img src="img/nubiam.jpeg" alt="Coordinadora Académica JT">
+            </div>
+            <div class="staff-info">
+              <h3 class="staff-name">Nubia Rosa Monsalve Fuentes</h3>
+              <p class="staff-position">Coordinadora Académica JT</p>
+              <p class="staff-description">Responsable del acompañamiento pedagógico, control académico y apoyo a los docentes y estudiantes en su proceso formativo en la jornada de la tarde.</p>
+              <div class="staff-contact">
+                <div class="contact-item">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Órganos de Gobierno -->
+      <div class="department-section">
+        <h2 class="department-title">Órganos de Gobierno</h2>
+        <div class="staff-grid">
+          <div class="staff-card">
+            <div class="staff-photo">
+              <img src="img/consejodirectivo.png" alt="Consejo Directivo">
+            </div>
+            <div class="staff-info">
+              <h3 class="staff-name">Consejo Directivo</h3>
+              <p class="staff-position">Órgano de Gobierno Escolar</p>
+              <p class="staff-description">Integrado por rector, docentes, estudiantes, padres de familia, exalumnos y sector productivo. Define las directrices institucionales y toma decisiones estratégicas para el desarrollo del colegio.</p>
+              <div class="staff-contact">
+                <div class="contact-item">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="staff-card">
+            <div class="staff-photo">
+              <img src="img/consejoacademico.png" alt="Consejo Académico">
+            </div>
+            <div class="staff-info">
+              <h3 class="staff-name">Consejo Académico</h3>
+              <p class="staff-position">Órgano de Gobierno Escolar</p>
+              <p class="staff-description">Conformado por el rector y los coordinadores académicos. Se encarga de la orientación pedagógica, evaluación institucional y decisiones relacionadas con el currículo y la promoción de estudiantes.</p>
+              <div class="staff-contact">
+                <div class="contact-item">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="staff-card">
+            <div class="staff-photo">
+              <img src="img/consejodeestudiantes.png" alt="Consejo de Estudiantes">
+            </div>
+            <div class="staff-info">
+              <h3 class="staff-name">Consejo de Estudiantes</h3>
+              <p class="staff-position">Órgano de Participación Estudiantil</p>
+              <p class="staff-description">Integrado por representantes de cada grado. Promueve la participación democrática, defiende los derechos estudiantiles y presenta propuestas para el mejoramiento institucional.</p>
+              <div class="staff-contact">
+                <div class="contact-item">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="staff-card">
+            <div class="staff-photo">
+              <img src="img/asambleadepadres.png"Asociación de Padres">
+            </div>
+            <div class="staff-info">
+              <h3 class="staff-name">Asociación de Padres</h3>
+              <p class="staff-position">Órgano de Participación Familiar</p>
+              <p class="staff-description">Organización que representa a los padres de familia, apoya los procesos educativos, participa en decisiones institucionales y promueve el bienestar de la comunidad educativa.</p>
+              <div class="staff-contact">
+                <div class="contact-item">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="staff-card">
+            <div class="staff-photo">
+              <img src="img/personeria.png" alt="Personero Estudiantil">
+            </div>
+            <div class="staff-info">
+              <h3 class="staff-name">Personero Estudiantil</h3>
+              <p class="staff-position">Representante Estudiantil</p>
+              <p class="staff-description">Estudiante elegido democráticamente que representa los intereses de sus compañeros, promueve el cumplimiento de derechos y deberes, y sirve como mediador ante las directivas.</p>
+              <div class="staff-contact">
+                <div class="contact-item">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="staff-card">
+            <div class="staff-photo">
+              <img src="img/contraloria.png" alt="Contralor Estudiantil">
+            </div>
+            <div class="staff-info">
+              <h3 class="staff-name">Contralor Estudiantil</h3>
+              <p class="staff-position">Veedor de Recursos</p>
+              <p class="staff-description">Estudiante encargado de promover la transparencia en el manejo de recursos, fomentar la participación ciudadana y velar por el buen uso de los bienes públicos en la institución.</p>
+              <div class="staff-contact">
+                <div class="contact-item">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Personal Docente -->
+      <div class="department-section">
+        <h2 class="department-title">Personal Docente</h2>
+        <div class="staff-grid">
+          <div class="staff-card">
+            <div class="staff-photo">
+              <div class="staff-photo-placeholder">👶</div>
+            </div>
+            <div class="staff-info">
+              <h3 class="staff-name">Docentes de Preescolar</h3>
+              <p class="staff-position">Educación Preescolar</p>
+              <p class="staff-description">Profesionales especializados en educación inicial, enfocados en el desarrollo integral de niños y niñas de 3 a 5 años, promoviendo habilidades cognitivas, sociales y emocionales.</p>
+              <div class="staff-contact">
+                <div class="contact-item">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="staff-card">
+            <div class="staff-photo">
+              <div class="staff-photo-placeholder">👨‍🏫</div>
+            </div>
+            <div class="staff-info">
+              <h3 class="staff-name">Docentes de Primaria</h3>
+              <p class="staff-position">Educación Básica Primaria</p>
+              <p class="staff-description">Equipo de docentes especializados en la formación integral de estudiantes de básica primaria, enfocados en el desarrollo de competencias básicas y valores institucionales.</p>
+              <div class="staff-contact">
+                <div class="contact-item">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="staff-card">
+            <div class="staff-photo">
+              <div class="staff-photo-placeholder">👩‍🏫</div>
+            </div>
+            <div class="staff-info">
+              <h3 class="staff-name">Docentes de Secundaria</h3>
+              <p class="staff-position">Educación Básica Secundaria</p>
+              <p class="staff-description">Profesores especializados por áreas del conocimiento, comprometidos con la formación académica y personal de los estudiantes de secundaria.</p>
+              <div class="staff-contact">
+                <div class="contact-item">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="staff-card">
+            <div class="staff-photo">
+              <div class="staff-photo-placeholder">🎓</div>
+            </div>
+            <div class="staff-info">
+              <h3 class="staff-name">Docentes de Media</h3>
+              <p class="staff-position">Educación Media</p>
+              <p class="staff-description">Docentes especializados en la preparación de estudiantes para la educación superior y el mundo laboral, con énfasis en competencias específicas.</p>
+              <div class="staff-contact">
+                <div class="contact-item">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Personal de Apoyo -->
+      <div class="department-section">
+        <h2 class="department-title">Personal de Apoyo</h2>
+        <div class="staff-grid">
+          <div class="staff-card">
+            <div class="staff-photo">
+              <div class="staff-photo-placeholder">🏥</div>
+            </div>
+            <div class="staff-info">
+              <h3 class="staff-name">Orientación Escolar</h3>
+              <p class="staff-position">Psicología y Orientación</p>
+              <p class="staff-description">Profesionales en psicología y orientación escolar que brindan apoyo integral a estudiantes, familias y docentes en el proceso educativo.</p>
+              <div class="staff-contact">
+                <div class="contact-item">
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="staff-card">
+            <div class="staff-photo">
+              <div class="staff-photo-placeholder">🏢</div>
+            </div>
+            <div class="staff-info">
+              <h3 class="staff-name">Secretaría Académica</h3>
+              <p class="staff-position">Gestión Administrativa</p>
+              <p class="staff-description">Personal encargado de los procesos administrativos, registro académico, certificaciones y atención a la comunidad educativa.</p>
+              <div class="staff-contact">
+                <div class="contact-item">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="staff-card">
+            <div class="staff-photo">
+              <div class="staff-photo-placeholder">🛡️</div>
+            </div>
+            <div class="staff-info">
+              <h3 class="staff-name">Servicios Generales</h3>
+              <p class="staff-position">Mantenimiento y Seguridad</p>
+              <p class="staff-description">Equipo responsable del mantenimiento de las instalaciones, seguridad y servicios generales que garantizan un ambiente adecuado para el aprendizaje.</p>
+              <div class="staff-contact">
+                <div class="contact-item">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pie de página -->
+  <section id="footer">
+    <div class="footer container">
+      <div class="brand">
+        <h1><span>E</span>XALUMNOS <span>C</span>OLGESAN</h1>
+      </div>
+      <p>Copyright ©️ 2025</p>
+    </div>
+  </section>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  
+  <script>
+    // Función para toggle del menú lateral
+    function toggleMenu() {
+      const sideMenu = document.getElementById("sideMenu");
+      sideMenu.classList.toggle("open");
+    }
+
+    // Swiper para hero (si existe en esta página)
+    const heroSwiper = new Swiper('.heroSwiper', {
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  </script>
+  
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/689ba268e0fd9f192a113214/1j2fv4q9n';
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+    })();
+  </script>
+  <!--End of Tawk.to Script-->
+</body>
+</html>
